@@ -68,6 +68,14 @@ class OrderItem < ActiveRecord::Base
   # Columns
   enum provision_status: { ok: 0, warning: 1, critical: 2, unknown: 3, pending: 4 }
 
+  def manageiq_answers
+    answers = product.answers
+    product.product_type.questions.map do |question|
+      answer = answers.first { |row| row.product_type_question_id == question.id }
+      [question.manageiq_key.camelize, answer.nil? ? question.default : answer.answer]
+    end.to_h
+  end
+
   private
 
   def validate_product_id
