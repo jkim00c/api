@@ -5,19 +5,20 @@ class AwsFog
 
   def provision
     ENV['MOCK_MODE'] == 'true' ? Fog.mock! : Fog.unmock!
-    product_provisioner = order_item.product.product_type.name.constantize
-    begin
-      product_provisioner.provision(order_item, aws_settings)
-      order_item.provision_status = :ok
-    rescue Excon::Errors::BadRequest
-      order_item.provision_status = :critical
-      order_item.status_msg = 'Bad request. Check authorization credentials.'
-    rescue ArgumentError, StandardError, Fog::Compute::AWS::Error, NoMethodError => e
-      order_item.provision_status = :critical
-      order_item.status_msg = e.message
-    ensure
-      order_item.save
-    end
+    product_provisioner.provision(order_item, aws_settings)
+    order_item.provision_status = :ok
+  rescue => e
+    order_item.provision_status = :critical
+    order_item.status_msg = e.message
+    raise
+  ensure
+    order_item.save!
+  end
+
+  private
+
+  def product_provisioner
+    order_item.product.product_type.name.constantize
   end
 
   def order_item
