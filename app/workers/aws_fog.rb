@@ -4,7 +4,6 @@ class AwsFog < Provisioner
   end
 
   def provision
-    mock_mode
     begin
       send "provision_#{product_type}".to_sym
     rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden

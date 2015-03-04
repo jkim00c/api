@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProvisionWorker do
+describe ProvisionWorker do
   it 'provisions cloud instances using manage iq' do
     client = build_client
     order_item = build_order_item

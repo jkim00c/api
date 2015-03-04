@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Orders API' do
+describe 'Orders API' do
   let(:default_params) { { format: :json } }
 
   describe 'GET index' do

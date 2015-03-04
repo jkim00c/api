@@ -14,7 +14,9 @@ end
 
 RSpec.configure do |config|
   config.include DeviseRequestHelper, type: :request
+  config.include DeviseRequestHelper, type: :feature
 end
+
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller

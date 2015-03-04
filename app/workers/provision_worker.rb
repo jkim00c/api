@@ -4,8 +4,9 @@ class ProvisionWorker < Provisioner
   end
 
   def perform
-    if miq_settings[:enabled]
+    if miq_settings[:enabled] == 't'
       MiqProvision.new(@order_item_id).provision
+      miq_provision
     else
       fog_provision = "#{cloud}Fog".constantize
       fog_provision.new(@order_item_id).provision

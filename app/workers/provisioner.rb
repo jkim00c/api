@@ -1,10 +1,9 @@
 class Provisioner < Providers
+
+  private
+
   def order_item
     @order_item ||= OrderItem.find @order_item_id
-  end
-
-  def mock_mode
-    ENV['MOCK_MODE'] == 'true' ? Fog.mock! : Fog.unmock!
   end
 
   def product_provisioner
