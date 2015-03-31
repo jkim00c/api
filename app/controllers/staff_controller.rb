@@ -66,6 +66,7 @@ class StaffController < ApplicationController
   error code: 404, desc: MissingRecordDetection::Messages.not_found
 
   def destroy
+    puts ".... DESTROY .... #{staff.inspect}"
     staff.destroy
     respond_with staff
   end

@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
   # Add Token Authentication
   include TokenAuthentication
 
-  protect_from_forgery
+  puts "........... SKIPPING protect_from_forgery"
+  #protect_from_forgery
   skip_before_action :verify_authenticity_token, if: :json_request?
 
   def current_user

@@ -30,6 +30,7 @@ class SessionsController < Devise::SessionsController
   api :DELETE, '/staff/sign_out', 'Invalidates user session'
 
   def destroy
+    puts ".... CALING /staff/sign_out ... " 
     respond_to do |format|
       format.html do
         super

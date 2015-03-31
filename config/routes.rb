@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :staff, controllers: { sessions: 'sessions' }
 
   get 'saml/init', to: 'saml#init'
+  get 'saml/metadata', to: 'saml#metadata'
   post 'saml/consume', to: 'saml#consume'
 
   # Alerts Routes

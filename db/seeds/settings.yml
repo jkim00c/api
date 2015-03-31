@@ -382,7 +382,7 @@
     field_type: check_box
     help_text:
     options:
-    value: 'false'
+    value: 'true'
     required:
     load_order: 0
     env_var_name: SAML_ENABLED
@@ -418,7 +418,7 @@
     field_type: text
     help_text:
     options:
-    value: ''
+    value: 'http://openam.micropaas.io:8080/openam'
     required:
     load_order: 4
     env_var_name: SAML_TARGET_URL
@@ -427,7 +427,7 @@
     field_type: text
     help_text:
     options:
-    value: ''
+    value: 'http://openam.micropaas.io:8080/openam'
     required:
     load_order: 5
     env_var_name: SAML_REDIRECT_URL
